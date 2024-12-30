@@ -9,7 +9,9 @@
             <td><input type="text" name="email" id="email" style="width:98%"></td>
         </tr>
         <tr>
-            <td id=result></td>
+            <td id=result>
+                <!-- 找到email的值  後端用find() -->
+            </td>
         </tr>
         <tr>
             <td><input type="button" value="尋找"></td>

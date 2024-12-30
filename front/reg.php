@@ -42,15 +42,15 @@ function reg() {
     }
     // console.log(user);
     if (user.acc == "" || user.pw == "" || user.pw2 == "" || user.email == "") {
+        // 檢查 帳密郵件是否為空值
         alert("不可空白");
     } else if (user.pw != user.pw2) {
+        // 檢查密碼是否一致
         alert("密碼錯誤");
     } else {
         $.get("./api/chk_acc.php", {
             acc: user.acc
         }, (res) => {
-
-
             if (parseInt(res) > 0) {
                 alert("帳號重複");
             } else {
