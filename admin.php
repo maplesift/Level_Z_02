@@ -28,19 +28,19 @@
         </div>
         <div id="mm">
             <div class="hal" id="lef">
+                <a class="blo" href="?do=acc">帳號管理</a>
                 <a class="blo" href="?do=po">分類網誌</a>
-                <a class="blo" href="?do=news">最新文章</a>
-                <a class="blo" href="?do=pop">人氣文章</a>
-                <a class="blo" href="?do=know">講座訊息</a>
-                <a class="blo" href="?do=que">問卷調查</a>
+                <a class="blo" href="?do=news">最新文章管理</a>
+                <a class="blo" href="?do=know">講座管理</a>
+                <a class="blo" href="?do=que">問卷管理</a>
             </div>
             <div class="hal" id="main">
+                <div class="" style="width:80%; display:inline-block;">
+                    <marquee behavior="" direction="">
+                        讓民眾踴躍投稿電子報，讓電子報成為大家相互交流，分享的園地！詳見最新文章
+                    </marquee>
+                </div>
                 <div>
-                    <div class="" style="width:75%; display:inline-block;">
-                        <marquee behavior="" direction="">
-                            讓民眾踴躍投稿電子報，讓電子報成為大家相互交流，分享的園地！詳見最新文章
-                        </marquee>
-                    </div>
                     <span style="width:23%; display:inline-block;">
                         <a href="?do=login">會員登入</a>
                     </span>
@@ -49,13 +49,13 @@
 				// 如果$_GET['do']有值就不用修改 如過沒有值就給他'main'
 				$do=$_GET['do']??'main';
 				// 給路徑 (前端)
-				$file="front/".$do.".php";
+				$file="back/".$do.".php";
 				// 如果file有東西 就include $file
 				// 如果沒有就include main.php
 				if(file_exists($file)){
 					include $file;
 				}else{
-					include "front/main.php";
+					include "back/main.php";
 				}
 
 				?>
