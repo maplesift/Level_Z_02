@@ -55,6 +55,7 @@ function reg() {
                 alert("帳號重複");
             } else {
                 $.post("./api/reg.php", user, (res) => {
+                    console.log("reg => ", res)
                     if (parseInt(res) == 1) {
                         alert("註冊完成,歡迎加入")
                     }
@@ -63,7 +64,7 @@ function reg() {
         })
     }
 }
-
+// 清除
 function resetForm() {
     $("#acc").val("");
     $("#pw").val("");
