@@ -56,17 +56,15 @@
 
 <script>
 function edit() {
-    // let ids = $("input[name='id[]']")
-    //     .map((idx, item) => {
-    //         return $(item).val()
-    //     }).get();
+    /* let ids=$("input[name='id[]']")
+             .map((idx,item)=>{
+                return $(item).val()
+              }).get(); */
     let ids = $("input[name='id[]']")
         .map((idx, item) => $(item).val()).get();
-    // console.log(ids);
-    let del = $("input[name='del[]']")
+    let del = $("input[name='del[]']:checked")
         .map((idx, item) => $(item).val()).get();
-
-    let sh = $("input[name='sh[]']")
+    let sh = $("input[name='sh[]']:checked")
         .map((idx, item) => $(item).val()).get();
 
     $.post("./api/edit_news.php", {
@@ -74,9 +72,8 @@ function edit() {
         sh,
         del
     }, (res) => {
-        console.log(res);
-
-        // location.reload();
+        //console.log(res);
+        location.reload();
     })
 
 }
