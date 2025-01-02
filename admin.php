@@ -43,25 +43,26 @@
                 <a class="blo" href="?do=que">問卷管理</a>
             </div>
             <div class="hal" id="main">
+                <div>
 
-                <div class="" style="width:80%; display:inline-block;">
-                    <marquee behavior="" direction="">
-                        讓民眾踴躍投稿電子報，讓電子報成為大家相互交流，分享的園地！詳見最新文章
-                    </marquee>
+                    <div class="" style="width:75%; display:inline-block;">
+                        <marquee behavior="" direction="">
+                            讓民眾踴躍投稿電子報，讓電子報成為大家相互交流，分享的園地！詳見最新文章
+                        </marquee>
+                    </div>
+    
+                    <span style="width:23%; display:inline-block;">
+                        <?php if(!isset($_SESSION['user'])): ?>
+                        <a href="?do=login">會員登入</a>
+                        <?php else:?>
+                        歡迎,<?=$_SESSION['user']; ?><br>
+                        <button onclick="location.href='admin.php'">管理</button>|
+                        <button onclick="logout()">登出</button>
+                        <?php endif;?>
+                    </span>
                 </div>
 
-                <span style="width:23%; display:inline-block;">
-                    <?php if(!isset($_SESSION['user'])): ?>
-                    <a href="?do=login">會員登入</a>
-                    <?php else:?>
-                    歡迎,<?=$_SESSION['user']; ?><br>
-                    <button onclick="location.href='admin.php'">管理</button>|
-                    <button onclick="logout()">登出</button>
-                    <?php endif;?>
-                </span>
-
-            </div>
-            <?php
+                <?php
 				// 如果$_GET['do']有值就不用修改 如過沒有值就給他'main'
 				$do=$_GET['do']??'main';
 				// 給路徑 (前端)
@@ -69,20 +70,23 @@
 				// 如果file有東西 就include $file
 				// 如果沒有就include main.php
 				if(file_exists($file)){
-					include $file;
+                    include $file;
 				}else{
-					include "back/main.php";
+                    include "back/main.php";
 				}
-
+                
 				?>
+            </div>
+        </div>
+<!-- ?? -->
+
+        <div id="bottom">
+            本網站建議使用：IE9.0以上版本，1024 x 768 pixels 以上觀賞瀏覽 ， Copyright © 2024健康促進網社群平台 All Right Reserved
+            <br>
+            服務信箱：health@test.labor.gov.tw<img src="./icon/02B02.jpg" width="45">
         </div>
     </div>
-    <div id="bottom">
-        本網站建議使用：IE9.0以上版本，1024 x 768 pixels 以上觀賞瀏覽 ， Copyright © 2024健康促進網社群平台 All Right Reserved
-        <br>
-        服務信箱：health@test.labor.gov.tw<img src="./icon/02B02.jpg" width="45">
-    </div>
-    </div>
+</div>
 
 </body>
 
