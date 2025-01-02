@@ -18,6 +18,7 @@
     </table>
     <div class="ct"><button onclick="send()">新增</button><button onclick="resetFrom()">清空</button></div>
 </fieldset>
+
 <script>
 function more() {
     let el = `<div>選項<input type="text" name="option[]" id="" style="width:80%"></div>`
@@ -25,7 +26,14 @@ function more() {
 }
 
 function send() {
-
+    let subject = $("#subject").val();
+    let options = $("input[name='option[]']").map((id, item) => $(item).val()).get()
+    $.post("./api/add_que.php", {
+        subject,
+        options
+    }, (res) => {
+        location.reload();
+    })
 }
 
 function resetFrom() {

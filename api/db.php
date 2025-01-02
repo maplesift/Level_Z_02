@@ -171,6 +171,7 @@ function to($url){
 $Total=new DB('total');
 $User=new DB('users');
 $News=new DB('news');
+$Que=new DB('que');
 
 if(!isset($_SESSION['total'])){
     if($Total->count(['date'=>date("Y-m-d")])>0){
