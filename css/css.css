@@ -193,7 +193,7 @@ input[type=radio] {
 	border-right: #666 1px solid;
 	border-left: none;
 	margin: 0px;
-	float: left;
+	/* float: left; */
 	display: inline-block;
 	background: #CCC;
 	margin: 0px;
@@ -318,7 +318,8 @@ input[type=radio] {
 	margin: auto;
 }
 
-.type {
+.type,
+.list-item {
 	display: block;
 	margin: 10px 0;
 }
