@@ -9,18 +9,25 @@
             <th></th>
         </tr>
         <?php
-                    $total=$News->count();
-                    $div=3;
-                    $pages=ceil($total/$div);
-                    $now=$_GET['p']??1;
-                    $start=($now-1)*$div;
-                    $rows=$News->all(['sh'=>1],"Limit $start,$div");
-                    foreach($rows as $row):
+            $total=$News->count();
+            $div=3;
+            $pages=ceil($total/$div);
+            $now=$_GET['p']??1;
+            $start=($now-1)*$div;
+            $rows=$News->all(['sh'=>1],"Limit $start,$div");
+            foreach($rows as $row):
         ?>
         <tr>
             <td><?=$row['title'];?></td>
             <td><?=mb_substr($row['news'],0,25);?></td>
-            <td></td>
+            <td>
+                <?php
+                    if(isset($_SESSION['user'])){
+                        echo "<a href='#'data-id='{$row['id']}' class='like'>讚</a>";
+                    }
+
+?>
+            </td>
         </tr>
         <?php endforeach;?>
     </table>
@@ -43,3 +50,18 @@
 
     </div>
 </fieldset>
+<script>
+$(".like").on("click", function() {
+    let id = $(this).data('id');
+    let like = $(this).text();
+    switch (
+        like) {
+        case "讚":
+            $(this).text("收回讚")
+            break;
+        case "收回讚":
+            $(this).text("讚")
+            break;
+    }
+})
+</script>
