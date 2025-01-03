@@ -9,6 +9,7 @@
             <th></th>
         </tr>
         <?php
+        // 分頁
             $total=$News->count();
             $div=3;
             $pages=ceil($total/$div);
@@ -23,16 +24,19 @@
             <td>
                 <?php
                     if(isset($_SESSION['user'])){
-                        echo "<a href='#'data-id='{$row['id']}' class='like'>讚</a>";
+                        $chk=$Log->count(['news'=>$row['id'],'user'=>$_SESSION['user']]);
+                        $like=($chk>0)?"收回讚":"讚";
+                        // 'data-id='{$row['id']}'
+                        echo "<a href='#'data-id='{$row['id']}' class='like'>$like</a>";
                     }
 
-?>
+                ?>
             </td>
         </tr>
         <?php endforeach;?>
     </table>
     <div class="ct">
-
+        <!-- 分頁 -->
         <?php
             if(($now-1)>0){
             echo "<a href='?do=news&p=".($now-1)."'> &lt;</a>";
@@ -54,14 +58,21 @@
 $(".like").on("click", function() {
     let id = $(this).data('id');
     let like = $(this).text();
-    switch (
-        like) {
-        case "讚":
-            $(this).text("收回讚")
-            break;
-        case "收回讚":
-            $(this).text("讚")
-            break;
-    }
+
+    $.post("./api/like.php", {
+        id
+    }, () => {
+        // console.log(res);
+
+        switch (
+            like) {
+            case "讚":
+                $(this).text("收回讚")
+                break;
+            case "收回讚":
+                $(this).text("讚")
+                break;
+        }
+    })
 })
 </script>
