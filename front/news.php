@@ -1,6 +1,14 @@
+<style>
+.detail {
+    display: none;
+}
+</style>
+
 <fieldset>
+
+
     <legend>
-        目前位置：首頁 > 最新文章區 > <span id="type">健康新知</span>
+        目前位置：首頁 > 最新文章區 >
     </legend>
     <table style="width:100%;">
         <tr>
@@ -15,12 +23,15 @@
             $pages=ceil($total/$div);
             $now=$_GET['p']??1;
             $start=($now-1)*$div;
-            $rows=$News->all(['sh'=>1],"Limit $start,$div");
+            $rows=$News->all(['sh'=>1]," order by `likes` desc Limit $start,$div");
             foreach($rows as $row):
         ?>
         <tr>
-            <td><?=$row['title'];?></td>
-            <td><?=mb_substr($row['news'],0,25);?></td>
+            <td class="row-title"><?=$row['title'];?></td>
+            <td>
+                <span class='title'><?=mb_substr($row['news'],0,25);?>...</span>
+                <span class='detail'><?=nl2br($row['news']);?></span>
+            </td>
             <td>
                 <?php
                     if(isset($_SESSION['user'])){
@@ -74,5 +85,8 @@ $(".like").on("click", function() {
                 break;
         }
     })
+})
+$(".row-title").on("click", function() {
+    $(this).next().children(".title,.detail").toggle();
 })
 </script>
