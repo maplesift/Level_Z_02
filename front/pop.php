@@ -16,7 +16,7 @@
 
 <fieldset>
     <legend>
-        目前位置：首頁 > 人氣文章區 >
+        目前位置：首頁 > 人氣文章區
     </legend>
     <table style="width:100%;">
         <tr>
