@@ -91,7 +91,7 @@ a:hover {
 
 #bottom {
 	text-align: right;
-	padding: 24px;
+	padding: 7px;
 }
 
 a.button {
@@ -316,4 +316,9 @@ input[type=radio] {
 	left: 0px;
 	right: 0px;
 	margin: auto;
+}
+
+.type {
+	display: block;
+	margin: 10px 0;
 }
