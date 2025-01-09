@@ -60,3 +60,5 @@
 ## 參考資料
 
 - [XAMPP - MySQL shutdown unexpectedly - Stack Overflow](https://stackoverflow.com/questions/18022809/xampp-mysql-shutdown-unexpectedly)
+
+- [Xampp 錯誤訊息：MySQL shutdown unexpectedly. 解決方法](https://guiblogs.com/xampp-shutdown-unexpectedly/)
